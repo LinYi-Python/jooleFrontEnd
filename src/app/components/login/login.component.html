@@ -1,0 +1,11 @@
+<app-header [isLoginPage] = "isLoginPage"></app-header>
+<img src="assets/images/logo.png">
+<p>Building Project Selection Platform</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <input type = 'text' placeholder="Username" formControlName="username" required>
+  <div *ngIf="!username.valid && (username.dirty || username.touched)">Invalid Username</div>
+  <input type = "password" placeholder="Password" formControlName="password" required>
+  <div *ngIf="!password.valid &&  (password.dirty || password.touched)">Invalid Password</div>
+
+  <button nz-button type="submit" [disabled]="!loginForm.valid">Log In</button>
+</form>
