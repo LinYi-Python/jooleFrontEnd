@@ -1,1 +1,13 @@
-<p>sign-out works!</p>
+<app-header [isLoginPage]="isLoginPage"></app-header>
+<img src="assets/images/logo.png">
+<p>Building Project Selection Platform</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <input type = 'text' placeholder="Username or Email" formControlName="username" required>
+  <div *ngIf="!username?.valid && (username?.dirty || username?.touched)">Invalid Username</div>
+  <input type = "password" placeholder="Password" formControlName="password" required>
+  <div *ngIf="!password?.valid &&  (password?.dirty || password?.touched)">Invalid Password</div>
+  <input type = "password" placeholder="Type Password Again" formControlName="passwordChecker" required>
+  <div *ngIf="passwordChecker?.value != password?.value && passwordChecker?.valid &&(passwordChecker?.dirty || passwordChecker?.touched)">Your password and confirmation password do not match</div>
+
+  <button type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+</form>

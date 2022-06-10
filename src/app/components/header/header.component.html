@@ -1,0 +1,4 @@
+<div *ngIf="!isAuthenticate">
+  <a *ngIf="isLoginPage" routerLink="/signOut" >sign up</a>
+  <a *ngIf="!isLoginPage" routerLink="/login" >log in</a>
+</div>

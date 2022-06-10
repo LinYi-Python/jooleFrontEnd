@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 
 import {Product} from '../../models/product';
 import {AuthService} from '../../services/auth.service';
+import {HomeService} from '../../services/home.service';
 
 
 @Component({
@@ -16,8 +17,9 @@ export class SearchComponent implements OnInit {
   products: Product[];
   selectedValue = null;
   listOfOption: Array<{ value: string; text: string }> = [];
+  nzFilterOption = () => true;
 
-  constructor(private httpClient: HttpClient, private router: Router, public authService: AuthService) { }
+  constructor(private httpClient: HttpClient, private router: Router,public homeService: HomeService, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.getIsAuthenticated();
@@ -56,5 +58,14 @@ export class SearchComponent implements OnInit {
         console.log(listOfOption);
         this.listOfOption = this.unique(listOfOption);
       });
+  }
+
+  toHomePage(){
+    this.router.navigate(['/detail']);
+    console.log(this.products);
+    console.log(this.selectedValue);
+    this.homeService.products = this.products;
+    // @ts-ignore
+    this.homeService.searchItem = this.selectedValue;
   }
 }

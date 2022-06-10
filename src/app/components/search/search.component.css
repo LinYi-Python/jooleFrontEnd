@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  align-items: center;
+  background-image: linear-gradient(#4AADE5,#FFFFFF);
+}
+p{
+  font-size: 1.8em;
+
+}
+div{
+  font-size: 1em;
+  color: crimson;
+}
+img{
+  margin-top: 200px;
+}
+
+
+nz-input-group{
+  width: 500px;
+}
+
+.searchBar{
+  display: flex;
+  flex-direction: row;
+}
+.searchInput{
+  width: 500px;
+}
+
+
